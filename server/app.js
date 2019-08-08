@@ -1,11 +1,26 @@
 var createError = require('http-errors');
+var mongoose = require('mongoose');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const config = require('./db');
+
+//Set up default mongoose connection
+mongoose.connect(config.DB,{useNewUrlParser: true}).then(
+  () => {console.log('Database is connected') },
+  err => { console.log('Can not connect to the database' +err)
+});
+
+//Get the default connection
+var db = mongoose.connection;
+
+//Bind connection to error event (to get notification of connection errors)
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/user.route');
+var productRouter = require('./routes/product.route');
 
 var app = express();
 
@@ -21,17 +36,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/products', productRouter);
 
 // Allow cross origin request
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
-});
-
-// Handle Api Request Here
-app.get('/profile', function(req, res) {
-  res.json({profile: {'firstName': 'Naveen','lastName':'Kumar', 'gravatar':'https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y', 'organization': 'Abc Company', 'country': 'India'}});
 });
 
 // catch 404 and forward to error handler
