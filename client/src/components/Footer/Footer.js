@@ -4,10 +4,11 @@ import './Footer.css';
 export default class Footer extends React.Component {
     render() {
         return (
-            <footer className="py-5 bg-dark">
-                <div className="container">
-                    <p className="m-0 text-center text-white">This is Footer.</p>
-                </div>
+            <footer class="blog-footer">
+                <p>Blog template <a href="https://getbootstrap.com/">Copyright@2020</a> by <a href="/">@naveen</a>.</p>
+                <p>
+                    <a href="/">Back to top</a>
+                </p>
             </footer>
         )
     }

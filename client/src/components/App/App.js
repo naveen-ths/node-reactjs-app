@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 
+import Header from '../../components/Header/Header';
+import Navigation from '../../components/Navigation/Navigation';
+import Footer from '../../components/Footer/Footer';
 import './App.css';
 
 export default class App extends React.Component {
@@ -69,7 +72,9 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <div className="row">
+        <Header></Header>
+        <Navigation></Navigation>
+        <div className="jumbotron p-3 p-md-5 text-white rounded">
           <table className="table table-hover">
             <thead>
               <tr>
@@ -118,6 +123,7 @@ export default class App extends React.Component {
             </form>
           </div>
         </div>
+        <Footer></Footer>
       </div>
     )
   }

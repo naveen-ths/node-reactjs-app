@@ -7,11 +7,13 @@ import './User.css';
 export default class User extends React.Component {
     render() {
         return (
-            <div className="user-page">
-                <Header></Header>
-                <Navigation ></Navigation>
-                <h1>User</h1>
-                <Footer></Footer>
+            <div className="container">
+                <div className="user-page">
+                    <Header></Header>
+                    <Navigation></Navigation>
+                    <h1>User</h1>
+                    <Footer></Footer>
+                </div>
             </div>
         )
     }
