@@ -70,7 +70,7 @@ export default class App extends React.Component {
     return (
       <div className="container">
         <div className="row">
-          <table className="table table-bordered table-responsive">
+          <table className="table table-hover">
             <thead>
               <tr>
                 <td>Sr No.</td>
